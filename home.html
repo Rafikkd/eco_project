@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Store</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
+    body { background:#ffffff; color:#333; }
+
+    header {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:20px 50px; background:#000; color:#fff;
+    }
+    header h1 { color:orange; }
+    nav a {
+      margin-left:20px; color:#fff; text-decoration:none;
+    }
+
+    .hero {
+      height:90vh; display:flex; flex-direction:column;
+      justify-content:center; align-items:center; text-align:center;
+      background:linear-gradient(to right, #000, #333);
+      color:#fff;
+    }
+    .hero h2 { font-size:48px; margin-bottom:20px; }
+    .hero p { font-size:18px; margin-bottom:30px; }
+    .hero button {
+      padding:15px 30px; background:orange; border:none;
+      color:#000; font-size:16px; cursor:pointer;
+      border-radius:5px;
+    }
+
+    .products {
+      padding:50px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+      gap:20px;
+    }
+    .card {
+      border:1px solid #ddd; padding:20px;
+      border-radius:10px; text-align:center;
+      transition:0.3s;
+    }
+    .card:hover { transform:scale(1.05); }
+    .card img { width:100%; border-radius:10px; }
+
+    .contact {
+      padding:50px; background:#f5f5f5;
+      text-align:center;
+    }
+    .contact input, .contact textarea {
+      width:80%; padding:10px; margin:10px 0;
+      border:1px solid #ccc; border-radius:5px;
+    }
+    .contact button {
+      padding:10px 20px; background:orange;
+      border:none; cursor:pointer;
+    }
+
+    footer {
+      background:#000; color:#fff;
+      text-align:center; padding:20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>MyStore</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#products">Products</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Welcome to My Store</h2>
+  <p>Best products with best prices</p>
+  <button>Shop Now</button>
+</section>
+
+<section id="products" class="products">
+  <div class="card">
+    <img src="https://via.placeholder.com/250" alt="product">
+    <h3>Product 1</h3>
+    <p>1000 DA</p>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/250" alt="product">
+    <h3>Product 2</h3>
+    <p>1500 DA</p>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/250" alt="product">
+    <h3>Product 3</h3>
+    <p>2000 DA</p>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Contact Us</h2>
+  <input type="text" placeholder="Your Name"><br>
+  <input type="email" placeholder="Your Email"><br>
+  <textarea placeholder="Your Message"></textarea><br>
+  <button>Send</button>
+</section>
+
+<footer>
+  <p>© 2026 MyStore - All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
