@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order</title>
+
+<style>
+body {
+  font-family: Arial;
+  background:#0a0a0a;
+  color:white;
+  padding:30px;
+}
+
+form {
+  max-width:400px;
+  margin:auto;
+  background:#111;
+  padding:20px;
+  border-radius:10px;
+}
+
+input {
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+}
+
+button {
+  width:100%;
+  padding:10px;
+  background:#1e90ff;
+  border:none;
+  color:white;
+  cursor:pointer;
+}
+</style>
+
+<script>
+function loadData(){
+  const p = new URLSearchParams(window.location.search);
+  document.getElementById("product").value = p.get("product");
+  document.getElementById("size").value = p.get("size");
+}
+
+function sendOrder(){
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let product = document.getElementById("product").value;
+  let size = document.getElementById("size").value;
+
+  let msg = `Order:%0AName: ${name}%0APhone: ${phone}%0AProduct: ${product}%0ASize: ${size}`;
+
+  window.open(`https://wa.me/213XXXXXXXXX?text=${msg}`);
+}
+</script>
+
+</head>
+
+<body onload="loadData()">
+
+<h2 style="text-align:center;">Complete Your Order</h2>
+
+<form onsubmit="event.preventDefault(); sendOrder();">
+
+<input id="product" readonly>
+<input id="size" readonly>
+
+<input id="name" placeholder="Your Name" required>
+<input id="phone" placeholder="Phone Number" required>
+
+<button type="submit">Send Order</button>
+
+</form>
+
+</body>
+</html>
