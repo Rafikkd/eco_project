@@ -3,102 +3,126 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STORM Perfume</title>
+<title>STORM</title>
 
 <style>
-body {
+body{
   margin:0;
-  font-family: Arial;
+  font-family:Arial;
   background:#0a0a0a;
   color:white;
-  transition:0.3s;
 }
 
-body.light {
-  background:#ffffff;
-  color:#000;
-}
-
-header {
+/* NAVBAR */
+header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:20px 40px;
+  padding:15px 30px;
   background:#000;
+  flex-wrap:wrap;
 }
 
-body.light header {
-  background:#ddd;
+.logo{color:#1e90ff;font-size:24px;}
+
+nav{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
 }
 
-header h1 {
-  color:#1e90ff;
-}
-
-nav a {
-  color:inherit;
-  margin-left:20px;
-  text-decoration:none;
-}
-
-button.theme {
-  padding:8px 12px;
+nav a{
+  padding:8px 15px;
   background:#1e90ff;
-  border:none;
   color:white;
-  cursor:pointer;
+  text-decoration:none;
   border-radius:5px;
 }
 
-.hero {
+/* HERO */
+.hero{
   height:90vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  background:linear-gradient(#000,#001f3f);
   text-align:center;
+
+  background:
+  linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.8)),
+  url('storm.jpg');
+
+  background-size:cover;
 }
 
-.hero button {
+.hero h1{font-size:40px;}
+.hero p{max-width:600px;}
+
+.hero button{
   margin-top:20px;
   padding:12px 25px;
   background:#1e90ff;
   border:none;
   color:white;
-  border-radius:5px;
-  cursor:pointer;
 }
+
+/* PRODUCTS */
+.products{
+  padding:40px;
+  text-align:center;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:#111;
+  padding:15px;
+  border-radius:10px;
+}
+
+.card img{width:100%;}
 </style>
-
-<script>
-function toggleTheme(){
-  document.body.classList.toggle("light");
-}
-</script>
-
 </head>
 
 <body>
 
 <header>
-  <h1>STORM</h1>
+  <div class="logo">STORM</div>
 
   <nav>
     <a href="index.html">Home</a>
     <a href="products.html">Products</a>
+    <a href="landing.html">Landing</a>
+    <a href="social.html">Social</a>
   </nav>
-
-  <button class="theme" onclick="toggleTheme()">🌙 / ☀️</button>
 </header>
 
 <section class="hero">
-  <h2>Luxury Perfume Brand</h2>
-  <p>Discover STORM Collection</p>
+  <h1>Luxury Perfume</h1>
+  <p>Placeholder text for brand description</p>
+  <a href="products.html"><button>Shop Now</button></a>
+</section>
 
-  <a href="products.html">
-    <button>View Products</button>
-  </a>
+<section class="products">
+  <h2>Featured</h2>
+
+  <div class="grid">
+    <div class="card">
+      <img src="https://via.placeholder.com/250">
+      <h3>Product 1</h3>
+      <p>2000 DA</p>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/250">
+      <h3>Product 2</h3>
+      <p>2500 DA</p>
+    </div>
+  </div>
 </section>
 
 </body>
