@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>STORM – الإصدار الأسود الأول: رقمك يخلّدك</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root{--blue:#1e90ff;--gold:#c9a84c;--blue-dim:rgba(30,144,255,.12);--bg:#090d14;--surface:#0f1620;--surface2:#141d2a;--border:rgba(30,144,255,.18);--text:#e8edf5;--muted:#7a8a9e;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;min-height:100vh;direction:rtl;}
+  nav{position:sticky;top:0;z-index:100;background:rgba(9,13,20,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;direction:ltr;}
+  .nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.7rem;letter-spacing:.12em;color:var(--blue);text-decoration:none;text-transform:uppercase;}
+  .nav-logo span{color:var(--text);}
+  .nav-links{display:flex;gap:2rem;list-style:none;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;transition:color .2s;}
+  .nav-links a:hover{color:var(--blue);}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+  .burger span{display:block;width:24px;height:2px;background:var(--text);transition:.3s;}
+  @media(max-width:600px){
+    .nav-links{display:none;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:var(--surface);padding:1.5rem 2rem;border-bottom:1px solid var(--border);gap:1.2rem;}
+    .nav-links.open{display:flex;}
+    .burger{display:flex;}
+  }
+  .breadcrumb{padding:1.5rem 2rem .5rem;max-width:960px;margin:0 auto;font-size:.82rem;color:var(--muted);}
+  .breadcrumb a{color:var(--muted);text-decoration:none;transition:color .2s;}
+  .breadcrumb a:hover{color:var(--blue);}
+  .breadcrumb span{margin:0 .4rem;}
+  .offer-page{padding:2rem;max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+  @media(max-width:640px){.offer-page{grid-template-columns:1fr;gap:2rem;}}
+  .img-area{aspect-ratio:3/4;border:1px solid var(--border);border-radius:8px;overflow:hidden;position:relative;background:#0c1420;transition:border-color .3s;}
+  .img-area:hover{border-color:var(--gold);}
+  .img-area img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
+  .tier-badge{display:inline-block;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,.35);padding:.25rem .75rem;border-radius:2px;margin-bottom:1rem;font-family:'Barlow Condensed',sans-serif;}
+  .offer-info h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.2;margin-bottom:.5rem;color:var(--text);}
+  .offer-subtitle{font-size:.85rem;color:var(--gold);margin-bottom:1rem;font-weight:500;}
+  .offer-desc{color:var(--muted);line-height:1.8;font-size:.95rem;margin-bottom:1rem;}
+  .offer-desc strong{color:var(--text);}
+  .features-list{list-style:none;margin-bottom:1.5rem;display:flex;flex-direction:column;gap:.7rem;}
+  .features-list li{display:flex;align-items:flex-start;gap:.6rem;font-size:.93rem;color:var(--muted);line-height:1.6;}
+  .features-list li::before{content:'✦';color:var(--gold);font-size:.7rem;margin-top:.3rem;flex-shrink:0;}
+  .features-list li strong{color:var(--text);}
+  .highlight{background:var(--surface2);border:1px solid rgba(201,168,76,.25);border-radius:5px;padding:1rem 1.2rem;margin-bottom:1.5rem;font-size:.88rem;color:var(--muted);line-height:1.8;}
+  .highlight strong{color:var(--gold);}
+  .limited-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.3);border-radius:4px;padding:.5rem 1rem;margin-bottom:1.5rem;font-size:.88rem;color:var(--gold);font-weight:600;}
+  .pricing{display:flex;align-items:center;gap:1rem;margin-bottom:.6rem;flex-wrap:wrap;}
+  .price{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:2.5rem;color:var(--text);}
+  .original{font-size:1rem;color:var(--muted);text-decoration:line-through;}
+  .discount-badge{background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.3);padding:.3rem .8rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;border-radius:3px;}
+  .savings{font-size:.82rem;color:var(--muted);margin-bottom:2rem;}
+  .savings strong{color:var(--gold);}
+  .order-btn{display:block;width:100%;padding:1rem;background:linear-gradient(135deg,#b8963e,#d4af5a);color:#0a0a0a;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.12em;text-transform:uppercase;border:none;cursor:pointer;border-radius:4px;text-align:center;transition:opacity .2s,transform .2s;}
+  .order-btn:hover{opacity:.88;transform:translateY(-2px);}
+  .divider{border:none;border-top:1px solid var(--border);margin:1.75rem 0;}
+  .specs{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
+  .spec{background:var(--surface2);border:1px solid var(--border);padding:.75rem 1rem;border-radius:4px;}
+  .spec-label{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem;}
+  .spec-val{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1rem;color:var(--text);}
+  .back-link{display:inline-flex;align-items:center;gap:.5rem;color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:500;text-transform:uppercase;transition:color .2s;padding:2rem;}
+  .back-link:hover{color:var(--blue);}
+  footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem;}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">STR<span>O</span>RM</a>
+  <button class="burger" onclick="this.nextElementSibling.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="landing.html">Landing</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="products.html">المنتجات</a><span>/</span>High Medium<span>/</span>الإصدار الأسود الأول
+</div>
+
+<div class="offer-page">
+  <div class="img-area">
+    <img src="offer4.jpg" alt="الإصدار الأسود الأول"/>
+  </div>
+  <div class="offer-info">
+    <div class="tier-badge">Tier 02 — High Medium</div>
+    <h1>الإصدار الأسود الأول</h1>
+    <div class="offer-subtitle">BLACK STORM — رقمك يخلّدك</div>
+
+    <div class="limited-badge">⭐ أول 100 زبون فقط يحصلون على هذا العرض</div>
+
+    <p class="offer-desc">إصدار محدود مرقّم يدوياً — كل قطعة فريدة من نوعها:</p>
+    <ul class="features-list">
+      <li><strong>ترقيم يدوي بالذهب الأسود</strong> من #001 إلى #100</li>
+      <li><strong>علبة خشبية فاخرة</strong> بدلاً من الكرتون — قابلة لإعادة الاستخدام كصندوق مجوهرات</li>
+      <li><strong>عضوية "النادي الأسود"</strong> لمدة سنة كاملة تشمل: معاينة العطور الجديدة قبل الجميع + خصم 10% دائم</li>
+      <li><strong>هدية إضافية:</strong> بخاخ جيب 10 مل مجاناً</li>
+    </ul>
+
+    <div class="highlight">
+      <strong>BLACK STORM — الإصدار الأسود الأول</strong><br/>
+      إصدار محدود | #042 / 100<br/>
+      بطاقة عضوية <strong>Black Club</strong> مرفقة
+    </div>
+
+    <div class="pricing">
+      <span class="price">$27</span>
+      <span class="original">$30</span>
+      <span class="discount-badge">بدلاً من $30</span>
+    </div>
+    <div class="savings">توفر <strong>$3</strong> — عرض حصري لأول 100 زبون فقط</div>
+
+    <button class="order-btn" onclick="window.location.href='order.html?offer=offer4'" >اطلب الآن — احجز رقمك</button>
+
+    <hr class="divider"/>
+    <div class="specs">
+      <div class="spec"><div class="spec-label">الفئة</div><div class="spec-val">High Medium</div></div>
+      <div class="spec"><div class="spec-label">الكمية</div><div class="spec-val">100 قطعة فقط</div></div>
+      <div class="spec"><div class="spec-label">التغليف</div><div class="spec-val">علبة خشبية</div></div>
+      <div class="spec"><div class="spec-label">العضوية</div><div class="spec-val">Black Club — سنة</div></div>
+    </div>
+  </div>
+</div>
+
+<a class="back-link" href="products.html">← العودة إلى المنتجات</a>
+<footer>© 2025 STORM — جميع الحقوق محفوظة.</footer>
+</body>
+</html>

@@ -1,129 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STORM</title>
-
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>STORM – Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-body{
-  margin:0;
-  font-family:Arial;
-  background:#0a0a0a;
-  color:white;
-}
+  :root{
+    --blue:#1e90ff;
+    --blue-dim:rgba(30,144,255,.12);
+    --bg:#090d14;
+    --surface:#0f1620;
+    --border:rgba(30,144,255,.18);
+    --text:#e8edf5;
+    --muted:#7a8a9e;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;min-height:100vh;}
 
-/* NAVBAR */
-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px 30px;
-  background:#000;
-  flex-wrap:wrap;
-}
+  /* NAV */
+  nav{position:sticky;top:0;z-index:100;background:rgba(9,13,20,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;}
+  .nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.7rem;letter-spacing:.12em;color:var(--blue);text-decoration:none;text-transform:uppercase;}
+  .nav-logo span{color:var(--text);}
+  .nav-links{display:flex;gap:2rem;list-style:none;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;transition:color .2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--blue);}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+  .burger span{display:block;width:24px;height:2px;background:var(--text);transition:.3s;}
+  @media(max-width:600px){
+    .nav-links{display:none;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:var(--surface);padding:1.5rem 2rem;border-bottom:1px solid var(--border);gap:1.2rem;}
+    .nav-links.open{display:flex;}
+    .burger{display:flex;}
+  }
 
-.logo{color:#1e90ff;font-size:24px;}
+  /* HERO PHOTO — natural size, centered, no stretch */
+  .hero-photo{width:100%;display:flex;justify-content:center;background:var(--bg);padding:0;}
+  .hero-photo img{display:block;max-width:100%;height:auto;}
 
-nav{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
+  /* INTRO — text content right below the photo */
+  .intro{padding:5rem 2rem;max-width:700px;margin:0 auto;text-align:center;}
+  .intro-tag{display:inline-block;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);border:1px solid var(--border);padding:.35rem 1rem;border-radius:2px;margin-bottom:1.5rem;}
+  .intro h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(3.5rem,10vw,7rem);line-height:.92;letter-spacing:.04em;text-transform:uppercase;margin-bottom:1.5rem;}
+  .intro h1 em{color:var(--blue);font-style:normal;}
+  .intro p{color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:2.5rem;}
+  .btn{display:inline-block;padding:.75rem 2rem;background:var(--blue);color:#fff;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;border:none;cursor:pointer;transition:opacity .2s,transform .2s;}
+  .btn:hover{opacity:.85;transform:translateY(-2px);}
+  .btn-outline{background:transparent;border:1px solid var(--blue);color:var(--blue);margin-left:1rem;}
+  .btn-outline:hover{background:var(--blue-dim);}
 
-nav a{
-  padding:8px 15px;
-  background:#1e90ff;
-  color:white;
-  text-decoration:none;
-  border-radius:5px;
-}
+  /* FEATURES */
+  .section{padding:5rem 2rem;max-width:1100px;margin:0 auto;}
+  .section-label{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-bottom:.75rem;}
+  .section h2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(2rem,5vw,3rem);text-transform:uppercase;margin-bottom:3rem;}
+  .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;}
+  .feat-card{background:var(--surface);border:1px solid var(--border);padding:2rem;border-radius:4px;transition:border-color .2s,transform .2s;}
+  .feat-card:hover{border-color:var(--blue);transform:translateY(-4px);}
+  .feat-icon{font-size:2rem;margin-bottom:1rem;}
+  .feat-card h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.2rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.5rem;}
+  .feat-card p{color:var(--muted);font-size:.9rem;line-height:1.6;}
 
-/* HERO */
-.hero{
-  height:90vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-
-  background:
-  linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.8)),
-  url('storm.jpg');
-
-  background-size:cover;
-}
-
-.hero h1{font-size:40px;}
-.hero p{max-width:600px;}
-
-.hero button{
-  margin-top:20px;
-  padding:12px 25px;
-  background:#1e90ff;
-  border:none;
-  color:white;
-}
-
-/* PRODUCTS */
-.products{
-  padding:40px;
-  text-align:center;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-
-.card{
-  background:#111;
-  padding:15px;
-  border-radius:10px;
-}
-
-.card img{width:100%;}
+  /* FOOTER */
+  footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--muted);font-size:.85rem;}
 </style>
 </head>
-
 <body>
 
-<header>
-  <div class="logo">STORM</div>
+<nav>
+  <a class="nav-logo" href="index.html">STR<span>O</span>RM</a>
+  <button class="burger" onclick="this.nextElementSibling.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="landing.html">Landing</a></li>
+    <li><a href="feedback.html">feedback</a></li>
+    <li><a href="social.html">social media</a></li>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="products.html">Products</a>
-    <a href="landing.html">Landing</a>
-    <a href="social.html">Social</a>
-  </nav>
-</header>
 
-<section class="hero">
-  <h1>Luxury Perfume</h1>
-  <p>Placeholder text for brand description</p>
-  <a href="products.html"><button>Shop Now</button></a>
-</section>
+  </ul>
+</nav>
 
-<section class="products">
-  <h2>Featured</h2>
+<!-- HERO: pure full-screen photo, no text. Replace src with your image path. -->
+<div class="hero-photo">
+  <img src="home.jpg" alt="Black Storm"/>
+</div>
 
-  <div class="grid">
-    <div class="card">
-      <img src="https://via.placeholder.com/250">
-      <h3>Product 1</h3>
-      <p>2000 DA</p>
+<!-- INTRO: text content below the photo -->
+<div class="intro">
+  <div class="intro-tag">Premium Collection 2025</div>
+  <h1>Built for<br/><em>The Bold</em></h1>
+  <p>STORM delivers precision-crafted products engineered for performance. Uncompromising quality, striking design.</p>
+  <a class="btn" href="products.html">Shop Products</a>
+  <a class="btn btn-outline" href="landing.html">Learn More</a>
+  <a class="btn btn-outline" href="feedback.html"> feedback</a>
+
+  
+</div>
+
+<div class="section">
+  <div class="section-label">Why Storm</div>
+  <h2>Built Different</h2>
+  <div class="features">
+    <div class="feat-card">
+      <div class="feat-icon">⚡</div>
+      <h3>High Performance</h3>
+      <p>Every product engineered to exceed expectations, delivering results that push boundaries.</p>
     </div>
-
-    <div class="card">
-      <img src="https://via.placeholder.com/250">
-      <h3>Product 2</h3>
-      <p>2500 DA</p>
+    <div class="feat-card">
+      <div class="feat-icon">🛡️</div>
+      <h3>Durable Build</h3>
+      <p>Materials selected for longevity — built to last through the toughest conditions.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🎯</div>
+      <h3>Precision Design</h3>
+      <p>Clean lines, purposeful details. Design that serves function without sacrificing style.</p>
     </div>
   </div>
-</section>
+</div>
+
+<footer>© 2025 STORM — All rights reserved.</footer>
 
 </body>
 </html>
